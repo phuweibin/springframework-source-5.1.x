@@ -602,7 +602,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		Object exposedObject = bean;
 		try {
 			/**
-			 * 【依赖注入】
+			 * 【依赖注入！！！】
 			 * 填充的属性包括：普通属性和使用@Autowired和@Resource注解标注的引用类型属性的赋值。使用了反射操作set方法完成赋值.
 			 *
 			 * eg: 重点操作举例：
@@ -611,7 +611,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			populateBean(beanName, mbd, instanceWrapper);
 
 			/**
-			 * 完成Bean的初始化(执行afterPropertiesSet和init-method)
+			 * 完成Bean的初始化(执行afterPropertiesSet和init-method)！！！
 			 * 		注意：会调用@PostConstruct标注的方法，这个方法是在Bean创建完成，而且属性填充完成之后，才会被调用
 			 */
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
@@ -1476,12 +1476,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			MutablePropertyValues newPvs = new MutablePropertyValues(pvs);
 			/** 如果是按照名称进行自动注入，通过属性名称获取依赖的属性值或者引用 */
 			if (mbd.getResolvedAutowireMode() == AUTOWIRE_BY_NAME) {
-				// TODO WangBing ???
+				// 根据名称注入
 				autowireByName(beanName, mbd, bw, newPvs);
 			}
 			/** 如果是按照类型进行自动注入，则通过属性的类型获取依赖的属性值或者引用 */
 			if (mbd.getResolvedAutowireMode() == AUTOWIRE_BY_TYPE) {
-				// TODO WangBing ???
+				// 根据类型注入
 				autowireByType(beanName, mbd, bw, newPvs);
 			}
 			pvs = newPvs;
